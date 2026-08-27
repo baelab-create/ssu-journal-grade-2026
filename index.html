@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숭실대 2026 국제저명논문 등급 검색</title>
+<style>
+:root{
+  --bg:#f4f6fa; --card:#ffffff; --text:#1a2233; --muted:#66718a; --line:#e3e8f0;
+  --accent:#1b4fa0; --accent-soft:#e8effa;
+  --gS:#7c3aed; --gA:#1b4fa0; --gB:#0d8a5f; --gC:#b8860b; --gD:#8a5a44;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12161f; --card:#1b2230; --text:#e7ecf5; --muted:#94a0b8; --line:#2b3446;
+    --accent:#6ea8ff; --accent-soft:#22304a;
+    --gS:#a78bfa; --gA:#6ea8ff; --gB:#34d399; --gC:#fbbf24; --gD:#d4a373;
+  }
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:var(--bg); color:var(--text); line-height:1.5;}
+.wrap{max-width:1100px; margin:0 auto; padding:24px 16px 60px;}
+header h1{font-size:1.45rem; margin-bottom:4px;}
+header p.sub{color:var(--muted); font-size:.9rem; margin-bottom:20px;}
+.searchbar{display:flex; gap:8px; margin-bottom:12px;}
+.searchbar input{flex:1; padding:13px 16px; font-size:1.05rem; border:2px solid var(--line); border-radius:12px; background:var(--card); color:var(--text); outline:none;}
+.searchbar input:focus{border-color:var(--accent);}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+.chip{padding:6px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--muted); font-size:.85rem; cursor:pointer; user-select:none;}
+.chip.on{background:var(--accent); border-color:var(--accent); color:#fff;}
+.status{color:var(--muted); font-size:.85rem; margin-bottom:10px; min-height:1.2em;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:10px;}
+.card .top{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
+.badge{display:inline-block; padding:2px 10px; border-radius:6px; font-weight:700; font-size:.85rem; color:#fff;}
+.b-S{background:var(--gS);} .b-A{background:var(--gA);} .b-B{background:var(--gB);} .b-C{background:var(--gC);} .b-D{background:var(--gD);}
+.src{font-size:.75rem; font-weight:600; padding:2px 8px; border-radius:6px; background:var(--accent-soft); color:var(--accent);}
+.jtitle{font-weight:700; font-size:1.02rem;}
+.meta{color:var(--muted); font-size:.83rem; display:flex; flex-wrap:wrap; gap:4px 16px;}
+.meta b{color:var(--text); font-weight:600;}
+.hint{background:var(--card); border:1px dashed var(--line); border-radius:14px; padding:22px; color:var(--muted); font-size:.9rem; text-align:center;}
+.notes{margin-top:34px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.78rem;}
+.notes li{margin-left:18px; margin-bottom:3px;}
+.more{display:block; margin:14px auto 0; padding:9px 22px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--accent); font-size:.9rem; cursor:pointer;}
+mark{background:transparent; color:var(--accent); font-weight:800;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📚 숭실대학교 국제저명논문 등급 검색</h1>
+    <p class="sub">2026학년도 등급 분류 기준 · SCIE / SSCI / A&amp;HCI / SCOPUS · 학술지명 또는 ISSN으로 검색</p>
+  </header>
+
+  <div class="searchbar">
+    <input id="q" type="search" placeholder="학술지명 또는 ISSN 입력 (예: Nature, 0140-9883)" autofocus autocomplete="off">
+  </div>
+  <div class="chips" id="chips">
+    <span class="chip on" data-src="ALL">전체</span>
+    <span class="chip" data-src="SCIE">SCIE</span>
+    <span class="chip" data-src="SSCI">SSCI</span>
+    <span class="chip" data-src="A&HCI">A&amp;HCI</span>
+    <span class="chip" data-src="SCOPUS">SCOPUS</span>
+  </div>
+  <div class="status" id="status">데이터 불러오는 중…</div>
+  <div id="results"><div class="hint">검색어를 2자 이상 입력하면 결과가 표시됩니다.<br>ISSN은 하이픈(-) 유무와 관계없이 검색됩니다.</div></div>
+
+  <div class="notes">
+    <ul>
+      <li>SCIE·SSCI: JCR 랭킹 IF 기준 등급 산정. 2개 이상 카테고리에 동시에 속하는 경우 가장 유리한 카테고리 등급 적용(조정등급 우선 적용).</li>
+      <li>A&amp;HCI 등재지는 국제저명A 등급으로 인정.</li>
+      <li>SCOPUS 등재지(SCIE·SSCI·A&amp;HCI 중복 제외)는 D등급으로 인정. Inactive 및 ScopusID 미부여 저널 제외.</li>
+      <li>본 페이지는 참고용입니다. 최종 등급은 학교 공식 자료를 기준으로 확인하세요.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+// DB row: [src, title, abbr, issn, eissn, grade, adj, cat, if, ifp, q, publisher]
+var curSrc = 'ALL', shown = 0, matches = [], PAGE = 100;
+var $q = document.getElementById('q'), $res = document.getElementById('results'), $st = document.getElementById('status');
+
+function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function normIssn(t){ return t.replace(/[^0-9Xx]/g,'').toUpperCase(); }
+
+function search(){
+  if(!window.DB){ return; }
+  var raw = $q.value.trim();
+  matches = []; shown = 0;
+  if(raw.length < 2){
+    $res.innerHTML = '<div class="hint">검색어를 2자 이상 입력하면 결과가 표시됩니다.<br>ISSN은 하이픈(-) 유무와 관계없이 검색됩니다.</div>';
+    $st.textContent = '총 ' + window.DB.length.toLocaleString() + '건 등재 (SCIE 15,043 · SSCI 5,029 · A&HCI 1,980 · SCOPUS 30,294)';
+    return;
+  }
+  var qLow = raw.toLowerCase();
+  var qIssn = /^[0-9Xx\- ]+$/.test(raw) ? normIssn(raw) : null;
+  var db = window.DB;
+  for(var i=0;i<db.length;i++){
+    var r = db[i];
+    if(curSrc !== 'ALL' && r[0] !== curSrc) continue;
+    if(qIssn){
+      if(normIssn(r[3]).indexOf(qIssn) === 0 || normIssn(r[4]).indexOf(qIssn) === 0) matches.push(r);
+    }else{
+      if(r[1].toLowerCase().indexOf(qLow) !== -1 || (r[2] && r[2].toLowerCase().indexOf(qLow) !== -1)) matches.push(r);
+    }
+  }
+  $st.textContent = '검색 결과 ' + matches.length.toLocaleString() + '건';
+  render(true);
+}
+
+function hi(text, q){
+  var idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if(idx === -1 || !q) return esc(text);
+  return esc(text.slice(0,idx)) + '<mark>' + esc(text.slice(idx, idx+q.length)) + '</mark>' + esc(text.slice(idx+q.length));
+}
+
+function render(reset){
+  if(reset) $res.innerHTML = '';
+  var qRaw = $q.value.trim();
+  var isIssn = /^[0-9Xx\- ]+$/.test(qRaw);
+  var frag = document.createDocumentFragment();
+  var end = Math.min(shown + PAGE, matches.length);
+  for(var i=shown;i<end;i++){
+    var r = matches[i];
+    var d = document.createElement('div');
+    d.className = 'card';
+    var g = r[5] || (r[0]==='A&HCI' ? 'A' : '');
+    var badge = g ? '<span class="badge b-'+g+'">'+g+'등급</span>' : '';
+    var adj = r[6] ? '<span class="meta" style="display:inline"><b>조정등급</b> '+esc(r[6])+'</span>' : '';
+    var metas = [];
+    if(r[3]) metas.push('<span><b>ISSN</b> '+(isIssn?hi(r[3],qRaw):esc(r[3]))+'</span>');
+    if(r[4] && r[4]!==r[3]) metas.push('<span><b>E-ISSN</b> '+(isIssn?hi(r[4],qRaw):esc(r[4]))+'</span>');
+    if(r[7]) metas.push('<span><b>분야</b> '+esc(r[7].length>90?r[7].slice(0,90)+'…':r[7])+'</span>');
+    if(r[8]) metas.push('<span><b>IF</b> '+esc(r[8])+'</span>');
+    if(r[9]) metas.push('<span><b>IF상위</b> '+esc(r[9])+'%</span>');
+    if(r[10]) metas.push('<span><b>'+esc(r[10])+'</b></span>');
+    if(r[11]) metas.push('<span><b>출판사</b> '+esc(r[11])+'</span>');
+    d.innerHTML =
+      '<div class="top">'+badge+'<span class="src">'+esc(r[0])+'</span>'+
+      '<span class="jtitle">'+(isIssn?esc(r[1]):hi(r[1],qRaw))+'</span>'+
+      (r[2]?'<span class="meta" style="display:inline">('+esc(r[2])+')</span>':'')+
+      (r[6]?'<span class="src" style="background:transparent;border:1px solid var(--line);color:var(--muted)">조정: '+esc(r[6])+'</span>':'')+
+      '</div><div class="meta">'+metas.join('')+'</div>';
+    frag.appendChild(d);
+  }
+  shown = end;
+  $res.appendChild(frag);
+  var oldBtn = document.getElementById('moreBtn');
+  if(oldBtn) oldBtn.remove();
+  if(shown < matches.length){
+    var btn = document.createElement('button');
+    btn.id = 'moreBtn'; btn.className = 'more';
+    btn.textContent = '더 보기 ('+(matches.length-shown).toLocaleString()+'건 남음)';
+    btn.onclick = function(){ render(false); };
+    $res.appendChild(btn);
+  }
+  if(matches.length === 0){
+    $res.innerHTML = '<div class="hint">검색 결과가 없습니다.<br>철자를 확인하거나 다른 필터를 선택해 보세요. (SCOPUS 미등재 저널일 수 있습니다)</div>';
+  }
+}
+
+var timer;
+$q.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(search, 200); });
+document.getElementById('chips').addEventListener('click', function(e){
+  var c = e.target.closest('.chip'); if(!c) return;
+  document.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('on'); });
+  c.classList.add('on'); curSrc = c.dataset.src; search();
+});
+
+var dataScript = document.createElement('script');
+dataScript.src = 'data.js';
+dataScript.onload = function(){
+  $st.textContent = '총 ' + window.DB.length.toLocaleString() + '건 등재 (SCIE 15,043 · SSCI 5,029 · A&HCI 1,980 · SCOPUS 30,294)';
+  if($q.value.trim().length >= 2) search();
+};
+dataScript.onerror = function(){ $st.textContent = '데이터 로드 실패 — 새로고침 해주세요.'; };
+document.body.appendChild(dataScript);
+</script>
+</body>
+</html>
