@@ -92,6 +92,10 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .ptag.sci{background:rgba(124,58,237,.12); color:var(--gS);}
 .ptag.kci{background:rgba(102,113,138,.15); color:var(--muted);}
 .ptag.scop{display:block; width:fit-content; margin-top:3px; padding:0 5px; font-size:.62rem; background:var(--accent-soft); color:var(--accent); letter-spacing:.02em;}
+.ptag.rev{background:rgba(184,134,11,.14); color:var(--gC);}
+.pubs h3{font-size:.95rem; margin:0 0 8px;}
+.pubs .subsec{margin-bottom:22px;}
+.pubs .subsec:last-child{margin-bottom:0;}
 .badge.sm{font-size:.72rem; padding:1px 8px; white-space:nowrap;}
 mark{background:transparent; color:var(--accent); font-weight:800;}
 </style>
@@ -128,7 +132,22 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
 
   <div class="pubs">
     <h2>📄 2025년 부터 ~ 특허지도학생들 작성 논문 리스트 및 현황표</h2>
-    <div class="psub">총 17편 · 해외 8 · 국내 9 (국내·SCIE 1 포함) &nbsp;|&nbsp; 등급: 2026학년도 분류 기준 — D등급은 SCIE/SSCI/A&amp;HCI 미등재·SCOPUS 등재지, <span class="ptag scop" style="display:inline">SCOPUS</span>는 SCOPUS 동시 등재 표시, KCI는 국제저명 DB 미등재 국내지</div>
+    <div class="psub">게재 17편 · 심사 중 1편 &nbsp;|&nbsp; 등급: 2026학년도 분류 기준 — D등급은 SCIE/SSCI/A&amp;HCI 미등재·SCOPUS 등재지, <span class="ptag scop" style="display:inline">SCOPUS</span>는 SCOPUS 동시 등재 표시, KCI는 국제저명 DB 미등재 국내지</div>
+
+    <div class="subsec">
+      <h3>🔄 현재 심사 중 논문</h3>
+      <div class="ptable-wrap">
+      <table>
+        <thead><tr><th style="text-align:right">No.</th><th>제출</th><th>구분</th><th>등급</th><th>논문명</th><th>학술지</th><th>진행 상태</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="date">2026.04.10</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-D">D등급</span><span class="ptag scop">SCOPUS</span></td><td>Patent Co-classification Networks as a Futures-sign Evidence Base: Detecting Weak Signals of Technological Convergence</td><td class="jr">Foresight (Emerald)</td><td><span class="ptag rev">심사 중 (Awaiting Referee Scores)</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="subsec">
+    <h3>✅ 게재 완료 논문 <small style="color:var(--muted);font-weight:400">총 17편 · 해외 8 · 국내 9 (국내·SCIE 1 포함)</small></h3>
     <div class="ptable-wrap">
     <table>
       <thead><tr><th style="text-align:right">No.</th><th>발행</th><th>구분</th><th>등급</th><th>논문명</th><th>학술지</th></tr></thead>
@@ -152,6 +171,7 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
         <tr><td class="num">17</td><td class="date">2025.07.14</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-A">A등급</span><span class="ptag scop">SCOPUS</span></td><td><a href="https://doi.org/10.3390/biomimetics10070460" target="_blank" rel="noopener">AI-Driven Control Strategies for Biomimetic Robotics: Trends, Challenges, and Future Directions</a></td><td class="jr">Biomimetics 10(7), 460</td></tr>
       </tbody>
     </table>
+    </div>
     </div>
   </div>
 
