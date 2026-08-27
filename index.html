@@ -44,6 +44,19 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .meta{color:var(--muted); font-size:.83rem; display:flex; flex-wrap:wrap; gap:4px 16px;}
 .meta b{color:var(--text); font-weight:600;}
 .hint{background:var(--card); border:1px dashed var(--line); border-radius:14px; padding:22px; color:var(--muted); font-size:.9rem; text-align:center;}
+.navsec{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:16px;}
+.navtitle{font-weight:700; font-size:.95rem; margin-bottom:10px;}
+.navtitle small{color:var(--muted); font-weight:400; font-size:.78rem; margin-left:6px;}
+.navchips{display:flex; flex-wrap:wrap; gap:6px;}
+.navchip{padding:6px 13px; border-radius:999px; border:1px solid var(--line); background:var(--bg); color:var(--text); font-size:.85rem; cursor:pointer; user-select:none;}
+.navchip.on{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+.gradebtns{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line);}
+.gb{padding:6px 14px; border-radius:8px; border:2px solid var(--line); background:var(--bg); color:var(--text); font-size:.85rem; font-weight:700; cursor:pointer; user-select:none;}
+.gb small{font-weight:400; color:var(--muted);}
+.gb.c-S{border-color:var(--gS);} .gb.c-A{border-color:var(--gA);} .gb.c-B{border-color:var(--gB);} .gb.c-C{border-color:var(--gC);} .gb.c-D{border-color:var(--gD);}
+.gb.on{color:#fff;} .gb.on small{color:#fff;}
+.gb.on.c-ALL{background:var(--accent); border-color:var(--accent);}
+.gb.on.c-S{background:var(--gS);} .gb.on.c-A{background:var(--gA);} .gb.on.c-B{background:var(--gB);} .gb.on.c-C{background:var(--gC);} .gb.on.c-D{background:var(--gD);}
 .notes{margin-top:34px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.78rem;}
 .notes li{margin-left:18px; margin-bottom:3px;}
 .more{display:block; margin:14px auto 0; padding:9px 22px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--accent); font-size:.9rem; cursor:pointer;}
@@ -72,6 +85,11 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
     <span class="chip" data-src="SSCI">SSCI</span>
     <span class="chip" data-src="A&HCI">A&amp;HCI</span>
     <span class="chip" data-src="SCOPUS">SCOPUS</span>
+  </div>
+  <div class="navsec">
+    <div class="navtitle">🧭 분야별 탐색 <small>BAE LAB 관련 분야 — 분야를 고른 뒤 등급을 선택하세요</small></div>
+    <div class="navchips" id="navchips"></div>
+    <div class="gradebtns" id="gradebtns" style="display:none"></div>
   </div>
   <div class="status" id="status">데이터 불러오는 중…</div>
   <div id="results"><div class="hint">검색어를 2자 이상 입력하면 결과가 표시됩니다.<br>ISSN은 하이픈(-) 유무와 관계없이 검색됩니다.</div></div>
@@ -170,12 +188,121 @@ function render(reset){
   }
 }
 
+// ---- 분야별 탐색 (BAE LAB 관련 분야) ----
+// j: JCR(SCIE/SSCI/A&HCI) Category Description 정확 일치, s: SCOPUS Category 정확 일치
+var NAV = [
+  {k:'기술경영·혁신', j:[], s:['Management of Technology and Innovation']},
+  {k:'경영·전략', j:['MANAGEMENT'], s:['Strategy and Management']},
+  {k:'비즈니스', j:['BUSINESS'], s:['Business and International Management','General Business, Management and Accounting','Business, Management and Accounting (miscellaneous)']},
+  {k:'경영과학·OR', j:['OPERATIONS RESEARCH & MANAGEMENT SCIENCE'], s:['Management Science and Operations Research','General Decision Sciences','Decision Sciences (miscellaneous)']},
+  {k:'정보과학·계량분석', j:['INFORMATION SCIENCE & LIBRARY SCIENCE'], s:['Library and Information Sciences']},
+  {k:'정보시스템', j:['COMPUTER SCIENCE, INFORMATION SYSTEMS'], s:['Information Systems','Information Systems and Management','Management Information Systems']},
+  {k:'산업·제조공학', j:['ENGINEERING, INDUSTRIAL','ENGINEERING, MANUFACTURING'], s:['Industrial and Manufacturing Engineering']},
+  {k:'다학제 공학', j:['ENGINEERING, MULTIDISCIPLINARY'], s:['General Engineering','Engineering (miscellaneous)']},
+  {k:'AI·컴퓨터과학', j:['COMPUTER SCIENCE, ARTIFICIAL INTELLIGENCE','COMPUTER SCIENCE, INTERDISCIPLINARY APPLICATIONS'], s:['Artificial Intelligence','Computer Science Applications']},
+  {k:'건축·건설', j:['CONSTRUCTION & BUILDING TECHNOLOGY','ENGINEERING, CIVIL','ARCHITECTURE'], s:['Building and Construction','Civil and Structural Engineering','Architecture']},
+  {k:'경제학', j:['ECONOMICS'], s:['Economics and Econometrics','General Economics, Econometrics and Finance','Economics, Econometrics and Finance (miscellaneous)']},
+  {k:'환경·지속가능', j:['GREEN & SUSTAINABLE SCIENCE & TECHNOLOGY','ENVIRONMENTAL STUDIES'], s:['Renewable Energy, Sustainability and the Environment']},
+  {k:'도시·지역계획', j:['REGIONAL & URBAN PLANNING','URBAN STUDIES'], s:['Urban Studies','Geography, Planning and Development']}
+];
+var navSel = -1, navGrade = 'ALL';
+var GORD = {S:0, A:1, B:2, C:3, D:4};
+var $nav = document.getElementById('navchips'), $gb = document.getElementById('gradebtns');
+
+NAV.forEach(function(n, i){
+  var c = document.createElement('span');
+  c.className = 'navchip'; c.textContent = n.k; c.dataset.i = i;
+  $nav.appendChild(c);
+});
+
+function scopCats(str){
+  return str.split(';').map(function(x){ return x.replace(/^[\s,]+|[\s,]+$/g,''); }).filter(Boolean);
+}
+function navRows(n){
+  if(n._rows) return n._rows;
+  var out = [], db = window.DB, issnSet = {};
+  // 1차: SCOPUS 카테고리 일치 행 수집 + ISSN 목록 구축, JCR 카테고리 일치 행 수집
+  for(var i=0;i<db.length;i++){
+    var r = db[i];
+    if(r[0] === 'SCOPUS'){
+      if(n.s.length && scopCats(r[7]).some(function(x){ return n.s.indexOf(x) !== -1; })){
+        out.push(r);
+        var i1 = normIssn(r[3]), i2 = normIssn(r[4]);
+        if(i1.length >= 7) issnSet[i1] = 1;
+        if(i2.length >= 7) issnSet[i2] = 1;
+      }
+    }else{
+      if(n.j.indexOf(r[7]) !== -1){ out.push(r); r._m = n.k; }
+    }
+  }
+  // 2차: SCOPUS에서 이 분야로 분류된 저널의 ISSN과 일치하는 SCIE/SSCI/A&HCI 행 추가 (분류 체계 차이 보완)
+  for(var i=0;i<db.length;i++){
+    var r = db[i];
+    if(r[0] !== 'SCOPUS' && r._m !== n.k){
+      if(issnSet[normIssn(r[3])] || issnSet[normIssn(r[4])]) out.push(r);
+    }
+  }
+  out.sort(function(a,b){
+    var ga = GORD[a[5]] !== undefined ? GORD[a[5]] : 9, gb2 = GORD[b[5]] !== undefined ? GORD[b[5]] : 9;
+    if(ga !== gb2) return ga - gb2;
+    var pa = parseFloat(a[9]) || 999, pb = parseFloat(b[9]) || 999;
+    if(pa !== pb) return pa - pb;
+    return a[1].toLowerCase() < b[1].toLowerCase() ? -1 : 1;
+  });
+  n._rows = out;
+  return out;
+}
+function navClear(){
+  if(navSel === -1) return;
+  navSel = -1; navGrade = 'ALL';
+  $gb.style.display = 'none'; $gb.innerHTML = '';
+  document.querySelectorAll('.navchip').forEach(function(x){ x.classList.remove('on'); });
+}
+function navShow(){
+  var n = NAV[navSel];
+  var rows = navRows(n);
+  matches = navGrade === 'ALL' ? rows : rows.filter(function(r){ return r[5] === navGrade; });
+  shown = 0;
+  $st.textContent = '🧭 ' + n.k + (navGrade === 'ALL' ? '' : ' · ' + navGrade + '등급') + ' · ' + matches.length.toLocaleString() + '건';
+  render(true);
+}
+function navGradeBtns(){
+  var n = NAV[navSel], rows = navRows(n);
+  var cnt = {};
+  rows.forEach(function(r){ cnt[r[5]] = (cnt[r[5]] || 0) + 1; });
+  var html = '<span class="gb c-ALL' + (navGrade==='ALL'?' on':'') + '" data-g="ALL">전체 <small>' + rows.length.toLocaleString() + '</small></span>';
+  ['S','A','B','C','D'].forEach(function(g){
+    if(cnt[g]) html += '<span class="gb c-' + g + (navGrade===g?' on':'') + '" data-g="' + g + '">' + g + '등급 <small>' + cnt[g].toLocaleString() + '</small></span>';
+  });
+  $gb.innerHTML = html;
+  $gb.style.display = 'flex';
+}
+$nav.addEventListener('click', function(e){
+  var c = e.target.closest('.navchip'); if(!c || !window.DB) return;
+  var i = +c.dataset.i;
+  if(i === navSel){ navClear(); search(); return; }
+  navSel = i; navGrade = 'ALL';
+  document.querySelectorAll('.navchip').forEach(function(x){ x.classList.remove('on'); });
+  c.classList.add('on');
+  $q.value = '';
+  navGradeBtns();
+  navShow();
+});
+$gb.addEventListener('click', function(e){
+  var b = e.target.closest('.gb'); if(!b) return;
+  navGrade = b.dataset.g;
+  $gb.querySelectorAll('.gb').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on');
+  navShow();
+});
+
 var timer;
-$q.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(search, 200); });
+$q.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ navClear(); search(); }, 200); });
 document.getElementById('chips').addEventListener('click', function(e){
   var c = e.target.closest('.chip'); if(!c) return;
   document.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('on'); });
-  c.classList.add('on'); curSrc = c.dataset.src; search();
+  c.classList.add('on'); curSrc = c.dataset.src;
+  navClear(); search();
 });
 
 var dataScript = document.createElement('script');
