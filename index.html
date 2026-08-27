@@ -75,6 +75,9 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .more{display:block; margin:14px auto 0; padding:9px 22px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--accent); font-size:.9rem; cursor:pointer;}
 .pubs{margin-top:40px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px;}
 .pubs h2{font-size:1.1rem; margin-bottom:2px;}
+.pubshead{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap;}
+.dlbtn{flex-shrink:0; padding:7px 14px; border-radius:9px; border:1px solid var(--line); background:var(--bg); color:var(--accent); font-size:.82rem; font-weight:600; cursor:pointer;}
+.dlbtn:hover{border-color:var(--accent);}
 .pubs .psub{color:var(--muted); font-size:.83rem; margin-bottom:14px;}
 .ptable-wrap{overflow-x:auto;}
 .pubs table{width:100%; border-collapse:collapse; font-size:.85rem; min-width:640px;}
@@ -133,7 +136,10 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
   <div id="results"><div class="hint">검색어를 2자 이상 입력하면 결과가 표시됩니다.<br>ISSN은 하이픈(-) 유무와 관계없이 검색됩니다.</div></div>
 
   <div class="pubs">
-    <h2>📄 2025년 부터 ~ 특허지도학생들 작성 논문 리스트 및 현황표</h2>
+    <div class="pubshead">
+      <h2>📄 2025년 부터 ~ 특허지도학생들 작성 논문 리스트 및 현황표</h2>
+      <button id="pubsDl" class="dlbtn" type="button">⬇ HTML 다운로드</button>
+    </div>
     <div class="psub">게재 17편 · 진행 중 5편 &nbsp;|&nbsp; 등급: 2026학년도 분류 기준 — D등급은 SCIE/SSCI/A&amp;HCI 미등재·SCOPUS 등재지, <span class="ptag scop" style="display:inline">SCOPUS</span>는 SCOPUS 동시 등재 표시, KCI는 국제저명 DB 미등재 국내지</div>
 
     <div class="subsec">
@@ -419,6 +425,22 @@ $gb.addEventListener('click', function(e){
   $gb.querySelectorAll('.gb').forEach(function(x){ x.classList.remove('on'); });
   b.classList.add('on');
   navShow();
+});
+
+// 논문 현황표 섹션을 독립 HTML 파일로 다운로드
+document.getElementById('pubsDl').addEventListener('click', function(){
+  var sec = document.querySelector('.pubs').cloneNode(true);
+  var btn = sec.querySelector('#pubsDl'); if(btn) btn.remove();
+  var css = document.querySelector('style').textContent;
+  var today = new Date();
+  var dateStr = today.getFullYear() + '.' + String(today.getMonth()+1).padStart(2,'0') + '.' + String(today.getDate()).padStart(2,'0');
+  var html = '<!DOCTYPE html>\n<html lang="ko">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>BAE LAB 특허지도학생 논문 리스트 및 현황표</title>\n<style>' + css + '\n.pubs{margin-top:0;}</style>\n</head>\n<body>\n<div class="wrap">\n' + sec.outerHTML + '\n<p style="color:var(--muted);font-size:.75rem;margin-top:14px">출처: https://baelab-create.github.io/ssu-journal-grade-2026/ (' + dateStr + ' 기준)</p>\n</div>\n</body>\n</html>';
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'BAELAB_논문리스트_현황표_' + dateStr.replace(/\./g,'') + '.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
 });
 
 var timer;
