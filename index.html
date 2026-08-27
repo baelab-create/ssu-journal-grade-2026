@@ -23,10 +23,9 @@ body{font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',sans-serif; 
 header{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:20px;}
 header h1{font-size:1.45rem; margin-bottom:4px;}
 header p.sub{color:var(--muted); font-size:.9rem;}
-.baelab{text-align:center; color:var(--text); font-family:'Times New Roman',Times,Georgia,serif; line-height:1; user-select:none; flex-shrink:0;}
-.baelab .bl-main{font-size:1.7rem; font-weight:400; letter-spacing:.06em; white-space:nowrap;}
-.baelab .bl-sub{margin-top:3px; padding-top:3px; border-top:1.5px solid var(--text); font-size:.52rem; letter-spacing:.08em; white-space:nowrap; text-transform:uppercase;}
-.baelab .bl-sub b{font-size:.68rem; font-weight:400;}
+.baelab{flex-shrink:0;}
+.baelab img{height:46px; display:block;}
+@media (prefers-color-scheme: dark){ .baelab img{filter:invert(1);} }
 @media (max-width:640px){ .baelab{display:none;} }
 .searchbar{display:flex; gap:8px; margin-bottom:12px;}
 .searchbar input{flex:1; padding:13px 16px; font-size:1.05rem; border:2px solid var(--line); border-radius:12px; background:var(--card); color:var(--text); outline:none;}
@@ -47,7 +46,10 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .navsec{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:16px;}
 .navtitle{font-weight:700; font-size:.95rem; margin-bottom:10px;}
 .navtitle small{color:var(--muted); font-weight:400; font-size:.78rem; margin-left:6px;}
-.navchips{display:flex; flex-wrap:wrap; gap:6px;}
+.navchips{display:block;}
+.navgrplabel{font-size:.74rem; font-weight:700; color:var(--muted); margin:10px 0 5px; letter-spacing:.03em;}
+.navgrplabel:first-child{margin-top:0;}
+.navgrprow{display:flex; flex-wrap:wrap; gap:6px;}
 .navchip{padding:6px 13px; border-radius:999px; border:1px solid var(--line); background:var(--bg); color:var(--text); font-size:.85rem; cursor:pointer; user-select:none;}
 .navchip.on{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
 .gradebtns{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line);}
@@ -77,6 +79,8 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .ptag.int{background:var(--accent-soft); color:var(--accent);}
 .ptag.dom{background:rgba(13,138,95,.12); color:var(--gB);}
 .ptag.sci{background:rgba(124,58,237,.12); color:var(--gS);}
+.ptag.kci{background:rgba(102,113,138,.15); color:var(--muted);}
+.badge.sm{font-size:.72rem; padding:1px 8px; white-space:nowrap;}
 mark{background:transparent; color:var(--accent); font-weight:800;}
 </style>
 </head>
@@ -87,9 +91,8 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
       <h1>📚 숭실대학교 국제저명논문 등급 검색</h1>
       <p class="sub">2026학년도 등급 분류 기준 · SCIE / SSCI / A&amp;HCI / SCOPUS · 학술지명 또는 ISSN으로 검색</p>
     </div>
-    <div class="baelab" title="BAE LAB — Bio-inspired Architectural Engineering">
-      <div class="bl-main">BAE LAB</div>
-      <div class="bl-sub"><b>B</b>io-inspired <b>A</b>rchitectural <b>E</b>ngineering</div>
+    <div class="baelab">
+      <img src="baelab-logo.png" alt="BAE LAB — Bio-inspired Architectural Engineering">
     </div>
   </header>
 
@@ -116,25 +119,25 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
     <div class="psub">총 17편 · 해외 8 · 국내 9 (국내·SCIE 1 포함)</div>
     <div class="ptable-wrap">
     <table>
-      <thead><tr><th style="text-align:right">No.</th><th>발행</th><th>구분</th><th>논문명</th><th>학술지</th></tr></thead>
+      <thead><tr><th style="text-align:right">No.</th><th>발행</th><th>구분</th><th>등급</th><th>논문명</th><th>학술지</th></tr></thead>
       <tbody>
-        <tr><td class="num">1</td><td class="date">2026.07.28</td><td><span class="ptag int">해외</span></td><td><a href="https://www.mdpi.com/2079-9292/15/15/3314" target="_blank" rel="noopener">AI Control of Power Converters Under Semiconductor Constraints: A Critical Review of Deployment Readiness</a></td><td class="jr">Electronics 15(15), 3314</td></tr>
-        <tr><td class="num">2</td><td class="date">2026.06</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12859025" target="_blank" rel="noopener">차세대 인공지능 반도체 기술에 대한 특허 동향 분석 및 전략</a></td><td class="jr">전기학회논문지 75(6), 1352–1366</td></tr>
-        <tr><td class="num">3</td><td class="date">2026.05.27</td><td><span class="ptag int">해외</span></td><td><a href="https://www.mdpi.com/2313-7673/11/6/373" target="_blank" rel="noopener">Marine Invertebrate-Inspired Thermal Management: Functional Materials, Structural Architectures, and Integrated Systems</a></td><td class="jr">Biomimetics 11(6), 373</td></tr>
-        <tr><td class="num">4</td><td class="date">2026.05.25</td><td><span class="ptag sci">국내·SCIE</span></td><td><a href="https://journal.polymer-korea.or.kr/journal/archive/view/4642" target="_blank" rel="noopener">CNT 복합재를 기반으로 하는 하이브리드 필러의 열전도 특성 (Thermal Conductivity of CNT Composites Based on Hybrid Fillers)</a></td><td class="jr">Polymer(Korea) 50(3), 374–382</td></tr>
-        <tr><td class="num">5</td><td class="date">2026.03.05</td><td><span class="ptag int">해외</span></td><td><a href="https://www.mdpi.com/2313-7673/11/3/192" target="_blank" rel="noopener">Bio-Inspired Proprioception for Sensorless Control of a Klann Linkage Robot Using Attention-LSTM</a></td><td class="jr">Biomimetics 11(3), 192</td></tr>
-        <tr><td class="num">6</td><td class="date">2026.03</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003319290" target="_blank" rel="noopener">스마트 모빌리티 디스플레이 시야각 제어 기술: 국내외 연구 동향 및 특허 동향 분석</a></td><td class="jr">한국산학기술학회논문지 27(3), 80–90</td></tr>
-        <tr><td class="num">7</td><td class="date">2026.03</td><td><span class="ptag int">해외</span></td><td><a href="https://www.sciencedirect.com/science/article/abs/pii/S0172219025000869" target="_blank" rel="noopener">Enhancing Mechanical Performance of Thick Steel Plates for Offshore Wind Structures: A Classification and Patent Landscape Study</a></td><td class="jr">World Patent Information 84, 102419</td></tr>
-        <tr><td class="num">8</td><td class="date">2026.02.13</td><td><span class="ptag int">해외</span></td><td><a href="https://doi.org/10.1007/s42835-026-02607-0" target="_blank" rel="noopener">AI-Based DC Motor Angle Prediction Process for Endpoint Position Control of a Klann Linkage</a></td><td class="jr">Journal of Electrical Engineering &amp; Technology</td></tr>
-        <tr><td class="num">9</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003309734" target="_blank" rel="noopener">자율주행 모빌리티의 센서 유지관리 시스템의 노이즈 최소화 기술동향 분석</a></td><td class="jr">한국산학기술학회논문지 27(2), 188–196</td></tr>
-        <tr><td class="num">10</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003309728" target="_blank" rel="noopener">특수보호계통(SPS/RAS)의 분류 운용 전략 및 경제성 프레임워크에 대한 국제적 종합 분석</a></td><td class="jr">한국산학기술학회논문지 27(2), 481–489</td></tr>
-        <tr><td class="num">11</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003299951" target="_blank" rel="noopener">FFT 기반 전류 신호 분석과 CNN 모델을 활용한 BLDC 모터의 이물질 삽입 및 비대칭 부하 고장 진단</a></td><td class="jr">전기학회논문지 75(2), 324–333</td></tr>
-        <tr><td class="num">12</td><td class="date">2026.01.16</td><td><span class="ptag int">해외</span></td><td><a href="https://doi.org/10.3390/biomimetics11010076" target="_blank" rel="noopener">Bioinspired Heat Exchangers: A Multi-Scale Review of Thermo-Hydraulic Performance Enhancement</a></td><td class="jr">Biomimetics 11(1), 76</td></tr>
-        <tr><td class="num">13</td><td class="date">2026.01</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003301573" target="_blank" rel="noopener">사용 후 배터리를 활용한 전기차 충전 - ESS 통합 시스템 연구: 기술, 경제성 분석</a></td><td class="jr">한국산학기술학회논문지 27(1), 112–119</td></tr>
-        <tr><td class="num">14</td><td class="date">2026.01</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003301672" target="_blank" rel="noopener">MLCC 제조 기술의 전고체전지 응용 관련 특허 동향 분석: 주요 선도 기업을 중심으로</a></td><td class="jr">한국산학기술학회논문지 27(1), 1109–1119</td></tr>
-        <tr><td class="num">15</td><td class="date">2025.10.27</td><td><span class="ptag int">해외</span></td><td><a href="https://www.mdpi.com/2079-9292/14/21/4193" target="_blank" rel="noopener">Thermal Management of Wide-Bandgap Power Semiconductors: Strategies and Challenges in SiC and GaN Power Devices</a></td><td class="jr">Electronics 14(21), 4193</td></tr>
-        <tr><td class="num">16</td><td class="date">2025.09</td><td><span class="ptag dom">국내</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003234300" target="_blank" rel="noopener">연료전지 평가 장비 변수의 정량적 관계 분석: Pearson-Spearman-Kendall 기반 방법론</a></td><td class="jr">전기학회논문지 74(9), 1628–1635</td></tr>
-        <tr><td class="num">17</td><td class="date">2025.07.14</td><td><span class="ptag int">해외</span></td><td><a href="https://doi.org/10.3390/biomimetics10070460" target="_blank" rel="noopener">AI-Driven Control Strategies for Biomimetic Robotics: Trends, Challenges, and Future Directions</a></td><td class="jr">Biomimetics 10(7), 460</td></tr>
+        <tr><td class="num">1</td><td class="date">2026.07.28</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-B">B등급</span></td><td><a href="https://www.mdpi.com/2079-9292/15/15/3314" target="_blank" rel="noopener">AI Control of Power Converters Under Semiconductor Constraints: A Critical Review of Deployment Readiness</a></td><td class="jr">Electronics 15(15), 3314</td></tr>
+        <tr><td class="num">2</td><td class="date">2026.06</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12859025" target="_blank" rel="noopener">차세대 인공지능 반도체 기술에 대한 특허 동향 분석 및 전략</a></td><td class="jr">전기학회논문지 75(6), 1352–1366</td></tr>
+        <tr><td class="num">3</td><td class="date">2026.05.27</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-A">A등급</span></td><td><a href="https://www.mdpi.com/2313-7673/11/6/373" target="_blank" rel="noopener">Marine Invertebrate-Inspired Thermal Management: Functional Materials, Structural Architectures, and Integrated Systems</a></td><td class="jr">Biomimetics 11(6), 373</td></tr>
+        <tr><td class="num">4</td><td class="date">2026.05.25</td><td><span class="ptag sci">국내·SCIE</span></td><td><span class="badge sm b-C">C등급</span></td><td><a href="https://journal.polymer-korea.or.kr/journal/archive/view/4642" target="_blank" rel="noopener">CNT 복합재를 기반으로 하는 하이브리드 필러의 열전도 특성 (Thermal Conductivity of CNT Composites Based on Hybrid Fillers)</a></td><td class="jr">Polymer(Korea) 50(3), 374–382</td></tr>
+        <tr><td class="num">5</td><td class="date">2026.03.05</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-A">A등급</span></td><td><a href="https://www.mdpi.com/2313-7673/11/3/192" target="_blank" rel="noopener">Bio-Inspired Proprioception for Sensorless Control of a Klann Linkage Robot Using Attention-LSTM</a></td><td class="jr">Biomimetics 11(3), 192</td></tr>
+        <tr><td class="num">6</td><td class="date">2026.03</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003319290" target="_blank" rel="noopener">스마트 모빌리티 디스플레이 시야각 제어 기술: 국내외 연구 동향 및 특허 동향 분석</a></td><td class="jr">한국산학기술학회논문지 27(3), 80–90</td></tr>
+        <tr><td class="num">7</td><td class="date">2026.03</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-D">D등급</span></td><td><a href="https://www.sciencedirect.com/science/article/abs/pii/S0172219025000869" target="_blank" rel="noopener">Enhancing Mechanical Performance of Thick Steel Plates for Offshore Wind Structures: A Classification and Patent Landscape Study</a></td><td class="jr">World Patent Information 84, 102419</td></tr>
+        <tr><td class="num">8</td><td class="date">2026.02.13</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-C">C등급</span></td><td><a href="https://doi.org/10.1007/s42835-026-02607-0" target="_blank" rel="noopener">AI-Based DC Motor Angle Prediction Process for Endpoint Position Control of a Klann Linkage</a></td><td class="jr">Journal of Electrical Engineering &amp; Technology</td></tr>
+        <tr><td class="num">9</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003309734" target="_blank" rel="noopener">자율주행 모빌리티의 센서 유지관리 시스템의 노이즈 최소화 기술동향 분석</a></td><td class="jr">한국산학기술학회논문지 27(2), 188–196</td></tr>
+        <tr><td class="num">10</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003309728" target="_blank" rel="noopener">특수보호계통(SPS/RAS)의 분류 운용 전략 및 경제성 프레임워크에 대한 국제적 종합 분석</a></td><td class="jr">한국산학기술학회논문지 27(2), 481–489</td></tr>
+        <tr><td class="num">11</td><td class="date">2026.02</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003299951" target="_blank" rel="noopener">FFT 기반 전류 신호 분석과 CNN 모델을 활용한 BLDC 모터의 이물질 삽입 및 비대칭 부하 고장 진단</a></td><td class="jr">전기학회논문지 75(2), 324–333</td></tr>
+        <tr><td class="num">12</td><td class="date">2026.01.16</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-A">A등급</span></td><td><a href="https://doi.org/10.3390/biomimetics11010076" target="_blank" rel="noopener">Bioinspired Heat Exchangers: A Multi-Scale Review of Thermo-Hydraulic Performance Enhancement</a></td><td class="jr">Biomimetics 11(1), 76</td></tr>
+        <tr><td class="num">13</td><td class="date">2026.01</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003301573" target="_blank" rel="noopener">사용 후 배터리를 활용한 전기차 충전 - ESS 통합 시스템 연구: 기술, 경제성 분석</a></td><td class="jr">한국산학기술학회논문지 27(1), 112–119</td></tr>
+        <tr><td class="num">14</td><td class="date">2026.01</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003301672" target="_blank" rel="noopener">MLCC 제조 기술의 전고체전지 응용 관련 특허 동향 분석: 주요 선도 기업을 중심으로</a></td><td class="jr">한국산학기술학회논문지 27(1), 1109–1119</td></tr>
+        <tr><td class="num">15</td><td class="date">2025.10.27</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-B">B등급</span></td><td><a href="https://www.mdpi.com/2079-9292/14/21/4193" target="_blank" rel="noopener">Thermal Management of Wide-Bandgap Power Semiconductors: Strategies and Challenges in SiC and GaN Power Devices</a></td><td class="jr">Electronics 14(21), 4193</td></tr>
+        <tr><td class="num">16</td><td class="date">2025.09</td><td><span class="ptag dom">국내</span></td><td><span class="ptag kci">KCI</span></td><td><a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003234300" target="_blank" rel="noopener">연료전지 평가 장비 변수의 정량적 관계 분석: Pearson-Spearman-Kendall 기반 방법론</a></td><td class="jr">전기학회논문지 74(9), 1628–1635</td></tr>
+        <tr><td class="num">17</td><td class="date">2025.07.14</td><td><span class="ptag int">해외</span></td><td><span class="badge sm b-A">A등급</span></td><td><a href="https://doi.org/10.3390/biomimetics10070460" target="_blank" rel="noopener">AI-Driven Control Strategies for Biomimetic Robotics: Trends, Challenges, and Future Directions</a></td><td class="jr">Biomimetics 10(7), 460</td></tr>
       </tbody>
     </table>
     </div>
@@ -235,31 +238,61 @@ function render(reset){
 }
 
 // ---- 분야별 탐색 (BAE LAB 관련 분야) ----
-// j: JCR(SCIE/SSCI/A&HCI) Category Description 정확 일치, s: SCOPUS Category 정확 일치
+// j: JCR(SCIE/SSCI/A&HCI) Category Description 정확 일치, s: SCOPUS Category 정확 일치,
+// t: 학술지명 키워드(소문자 부분일치) — 엑셀 분류에 없는 세부 분야(배터리, 반도체 등) 보완용, g: 표시 그룹
 var NAV = [
-  {k:'기술경영·혁신', j:[], s:['Management of Technology and Innovation']},
-  {k:'경영·전략', j:['MANAGEMENT'], s:['Strategy and Management']},
-  {k:'비즈니스', j:['BUSINESS'], s:['Business and International Management','General Business, Management and Accounting','Business, Management and Accounting (miscellaneous)']},
-  {k:'경영과학·OR', j:['OPERATIONS RESEARCH & MANAGEMENT SCIENCE'], s:['Management Science and Operations Research','General Decision Sciences','Decision Sciences (miscellaneous)']},
-  {k:'정보과학·계량분석', j:['INFORMATION SCIENCE & LIBRARY SCIENCE'], s:['Library and Information Sciences']},
-  {k:'정보시스템', j:['COMPUTER SCIENCE, INFORMATION SYSTEMS'], s:['Information Systems','Information Systems and Management','Management Information Systems']},
-  {k:'산업·제조공학', j:['ENGINEERING, INDUSTRIAL','ENGINEERING, MANUFACTURING'], s:['Industrial and Manufacturing Engineering']},
-  {k:'다학제 공학', j:['ENGINEERING, MULTIDISCIPLINARY'], s:['General Engineering','Engineering (miscellaneous)']},
-  {k:'AI·컴퓨터과학', j:['COMPUTER SCIENCE, ARTIFICIAL INTELLIGENCE','COMPUTER SCIENCE, INTERDISCIPLINARY APPLICATIONS'], s:['Artificial Intelligence','Computer Science Applications']},
-  {k:'건축·건설', j:['CONSTRUCTION & BUILDING TECHNOLOGY','ENGINEERING, CIVIL','ARCHITECTURE'], s:['Building and Construction','Civil and Structural Engineering','Architecture']},
-  {k:'경제학', j:['ECONOMICS'], s:['Economics and Econometrics','General Economics, Econometrics and Finance','Economics, Econometrics and Finance (miscellaneous)']},
-  {k:'환경·지속가능', j:['GREEN & SUSTAINABLE SCIENCE & TECHNOLOGY','ENVIRONMENTAL STUDIES'], s:['Renewable Energy, Sustainability and the Environment']},
-  {k:'도시·지역계획', j:['REGIONAL & URBAN PLANNING','URBAN STUDIES'], s:['Urban Studies','Geography, Planning and Development']}
+  // 기술경영·분석
+  {g:'기술경영·분석', k:'기술경영·혁신', j:[], s:['Management of Technology and Innovation']},
+  {g:'기술경영·분석', k:'경영·전략', j:['MANAGEMENT'], s:['Strategy and Management']},
+  {g:'기술경영·분석', k:'비즈니스', j:['BUSINESS'], s:['Business and International Management','General Business, Management and Accounting','Business, Management and Accounting (miscellaneous)']},
+  {g:'기술경영·분석', k:'경영과학·OR', j:['OPERATIONS RESEARCH & MANAGEMENT SCIENCE'], s:['Management Science and Operations Research','General Decision Sciences','Decision Sciences (miscellaneous)']},
+  {g:'기술경영·분석', k:'정보과학·계량분석', j:['INFORMATION SCIENCE & LIBRARY SCIENCE'], s:['Library and Information Sciences']},
+  {g:'기술경영·분석', k:'정보시스템', j:['COMPUTER SCIENCE, INFORMATION SYSTEMS'], s:['Information Systems','Information Systems and Management','Management Information Systems']},
+  {g:'기술경영·분석', k:'특허·IP', j:[], s:[], t:['patent','intellectual property']},
+  {g:'기술경영·분석', k:'경제학', j:['ECONOMICS'], s:['Economics and Econometrics','General Economics, Econometrics and Finance','Economics, Econometrics and Finance (miscellaneous)']},
+  // 공학·기술
+  {g:'공학·기술', k:'전기·전자', j:['ENGINEERING, ELECTRICAL & ELECTRONIC'], s:['Electrical and Electronic Engineering']},
+  {g:'공학·기술', k:'반도체·디스플레이', j:['PHYSICS, APPLIED','OPTICS'], s:['Electronic, Optical and Magnetic Materials'], t:['semiconductor','display','photonic']},
+  {g:'공학·기술', k:'배터리·전기화학', j:['ELECTROCHEMISTRY'], s:['Electrochemistry'], t:['batter','energy storage','power sources','fuel cell']},
+  {g:'공학·기술', k:'에너지', j:['ENERGY & FUELS'], s:['Energy Engineering and Power Technology','General Energy','Energy (miscellaneous)','Fuel Technology']},
+  {g:'공학·기술', k:'기계공학', j:['ENGINEERING, MECHANICAL','MECHANICS'], s:['Mechanical Engineering']},
+  {g:'공학·기술', k:'열유체·열관리', j:['THERMODYNAMICS'], s:['Fluid Flow and Transfer Processes'], t:['heat transfer','thermal engineering','heat and mass']},
+  {g:'공학·기술', k:'화학공학', j:['ENGINEERING, CHEMICAL'], s:['General Chemical Engineering','Chemical Engineering (miscellaneous)','Process Chemistry and Technology']},
+  {g:'공학·기술', k:'소재·재료', j:['MATERIALS SCIENCE, MULTIDISCIPLINARY','METALLURGY & METALLURGICAL ENGINEERING'], s:['General Materials Science','Materials Science (miscellaneous)','Materials Chemistry','Metals and Alloys','Ceramics and Composites','Surfaces, Coatings and Films']},
+  {g:'공학·기술', k:'고분자·복합재', j:['POLYMER SCIENCE','MATERIALS SCIENCE, COMPOSITES'], s:['Polymers and Plastics']},
+  {g:'공학·기술', k:'나노', j:['NANOSCIENCE & NANOTECHNOLOGY'], s:[], t:['nanotechnol','nanoscale','nanomaterial']},
+  {g:'공학·기술', k:'로봇·제어·자동화', j:['ROBOTICS','AUTOMATION & CONTROL SYSTEMS'], s:['Control and Systems Engineering']},
+  {g:'공학·기술', k:'AI·컴퓨터과학', j:['COMPUTER SCIENCE, ARTIFICIAL INTELLIGENCE','COMPUTER SCIENCE, INTERDISCIPLINARY APPLICATIONS'], s:['Artificial Intelligence','Computer Science Applications']},
+  {g:'공학·기술', k:'통신·네트워크', j:['TELECOMMUNICATIONS'], s:['Computer Networks and Communications','Signal Processing']},
+  {g:'공학·기술', k:'바이오·생체모방', j:['ENGINEERING, BIOMEDICAL','MATERIALS SCIENCE, BIOMATERIALS'], s:['Biomedical Engineering','Bioengineering','Biomaterials'], t:['biomimetic','bioinspir','bio-inspired','biomimicry']},
+  {g:'공학·기술', k:'모빌리티·수송', j:['TRANSPORTATION SCIENCE & TECHNOLOGY','TRANSPORTATION','ENGINEERING, AEROSPACE'], s:['Automotive Engineering','Aerospace Engineering']},
+  {g:'공학·기술', k:'산업·제조공학', j:['ENGINEERING, INDUSTRIAL','ENGINEERING, MANUFACTURING'], s:['Industrial and Manufacturing Engineering']},
+  {g:'공학·기술', k:'다학제 공학', j:['ENGINEERING, MULTIDISCIPLINARY'], s:['General Engineering','Engineering (miscellaneous)']},
+  {g:'공학·기술', k:'건축·건설', j:['CONSTRUCTION & BUILDING TECHNOLOGY','ENGINEERING, CIVIL','ARCHITECTURE'], s:['Building and Construction','Civil and Structural Engineering','Architecture']},
+  {g:'공학·기술', k:'환경·지속가능', j:['GREEN & SUSTAINABLE SCIENCE & TECHNOLOGY','ENVIRONMENTAL STUDIES','ENGINEERING, ENVIRONMENTAL'], s:['Renewable Energy, Sustainability and the Environment','Environmental Engineering']},
+  {g:'공학·기술', k:'도시·지역계획', j:['REGIONAL & URBAN PLANNING','URBAN STUDIES'], s:['Urban Studies','Geography, Planning and Development']}
 ];
 var navSel = -1, navGrade = 'ALL';
 var GORD = {S:0, A:1, B:2, C:3, D:4};
 var $nav = document.getElementById('navchips'), $gb = document.getElementById('gradebtns');
 
-NAV.forEach(function(n, i){
-  var c = document.createElement('span');
-  c.className = 'navchip'; c.textContent = n.k; c.dataset.i = i;
-  $nav.appendChild(c);
-});
+(function(){
+  var lastGroup = null, row = null;
+  NAV.forEach(function(n, i){
+    if(n.g !== lastGroup){
+      lastGroup = n.g;
+      var lab = document.createElement('div');
+      lab.className = 'navgrplabel'; lab.textContent = n.g;
+      $nav.appendChild(lab);
+      row = document.createElement('div');
+      row.className = 'navgrprow';
+      $nav.appendChild(row);
+    }
+    var c = document.createElement('span');
+    c.className = 'navchip'; c.textContent = n.k; c.dataset.i = i;
+    row.appendChild(c);
+  });
+})();
 
 function scopCats(str){
   return str.split(';').map(function(x){ return x.replace(/^[\s,]+|[\s,]+$/g,''); }).filter(Boolean);
@@ -267,18 +300,26 @@ function scopCats(str){
 function navRows(n){
   if(n._rows) return n._rows;
   var out = [], db = window.DB, issnSet = {};
-  // 1차: SCOPUS 카테고리 일치 행 수집 + ISSN 목록 구축, JCR 카테고리 일치 행 수집
+  var tkw = n.t || [];
+  function titleHit(title){
+    var tl = title.toLowerCase();
+    for(var k=0;k<tkw.length;k++){ if(tl.indexOf(tkw[k]) !== -1) return true; }
+    return false;
+  }
+  // 1차: 카테고리 일치 또는 학술지명 키워드 일치 행 수집 (SCOPUS는 ISSN 목록도 구축)
   for(var i=0;i<db.length;i++){
     var r = db[i];
     if(r[0] === 'SCOPUS'){
-      if(n.s.length && scopCats(r[7]).some(function(x){ return n.s.indexOf(x) !== -1; })){
+      var hit = (n.s.length && scopCats(r[7]).some(function(x){ return n.s.indexOf(x) !== -1; })) ||
+                (tkw.length && titleHit(r[1]));
+      if(hit){
         out.push(r);
         var i1 = normIssn(r[3]), i2 = normIssn(r[4]);
         if(i1.length >= 7) issnSet[i1] = 1;
         if(i2.length >= 7) issnSet[i2] = 1;
       }
     }else{
-      if(n.j.indexOf(r[7]) !== -1){ out.push(r); r._m = n.k; }
+      if(n.j.indexOf(r[7]) !== -1 || (tkw.length && titleHit(r[1]))){ out.push(r); r._m = n.k; }
     }
   }
   // 2차: SCOPUS에서 이 분야로 분류된 저널의 ISSN과 일치하는 SCIE/SSCI/A&HCI 행 추가 (분류 체계 차이 보완)
