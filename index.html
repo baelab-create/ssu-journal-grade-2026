@@ -78,6 +78,9 @@ header p.sub{color:var(--muted); font-size:.9rem;}
 .pubshead{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap;}
 .dlbtn{flex-shrink:0; padding:7px 14px; border-radius:9px; border:1px solid var(--line); background:var(--bg); color:var(--accent); font-size:.82rem; font-weight:600; cursor:pointer;}
 .dlbtn:hover{border-color:var(--accent);}
+.dlrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+a.dlbtn{text-decoration:none; display:inline-block;}
+a.dlbtn small{color:var(--muted); font-weight:400;}
 .pubs .psub{color:var(--muted); font-size:.83rem; margin-bottom:14px;}
 .ptable-wrap{overflow-x:auto;}
 .pubs table{width:100%; border-collapse:collapse; font-size:.85rem; min-width:640px;}
@@ -184,6 +187,16 @@ mark{background:transparent; color:var(--accent); font-weight:800;}
       </tbody>
     </table>
     </div>
+    </div>
+  </div>
+
+  <div class="pubs" style="margin-top:16px">
+    <h2>📥 등급 자료 다운로드 (MD)</h2>
+    <div class="psub">마크다운(.md) 파일 — 메모장·VS Code·옵시디언 등에서 열 수 있습니다</div>
+    <div class="dlrow">
+      <a class="dlbtn" href="grade-summary.md" download="숭실대_국제저명논문_등급분류_2026_정리.md">⬇ 등급 분류 정리 <small>(4KB)</small></a>
+      <a class="dlbtn" href="scie-list.md" download="숭실대_2026_SCIE_등급_저널리스트.md">⬇ SCIE 등급 저널 리스트 · 9,454종 <small>(0.6MB)</small></a>
+      <a class="dlbtn" href="scopus-list.md" download="숭실대_2026_SCOPUS_저널리스트.md">⬇ SCOPUS 저널 리스트 · 30,291종 <small>(2.9MB)</small></a>
     </div>
   </div>
 
