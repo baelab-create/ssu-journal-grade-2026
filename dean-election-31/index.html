@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>제31대 공과대학장 선관위 검토자료</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="제31대 공과대학장(임기 2027~2028) 후보 선출 방법·일정·공고 이메일 초안. 선관위 의결 전 내부 검토자료.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="제31대 공과대학장 후보 선출 검토자료">
+<meta property="og:description" content="선출 방법 · 일정 · 공고 이메일 초안 — 선관위 의결 전 내부 검토용 (2026.10.29)">
+<meta property="og:url" content="https://baelab-create.github.io/ssu-journal-grade-2026/dean-election-31/">
+<meta property="og:image" content="https://baelab-create.github.io/ssu-journal-grade-2026/dean-election-31/og-dean31.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1f23; --muted:#5f646d; --line:#e2e0da;
+  --accent:#1f4e8c; --accent-soft:#e7eef8; --warn:#9a5b00; --warn-soft:#fff3dc;
+  --ok:#21704a; --ok-soft:#e3f3ea; --mark:#fff0b3; --code:#f3f2ee;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --card:#1e2125; --ink:#e8e9eb; --muted:#a2a7ae; --line:#33373d;
+    --accent:#8db4ea; --accent-soft:#1f2c3d; --warn:#f0b866; --warn-soft:#3a2e1a;
+    --ok:#7ccfa0; --ok-soft:#1b3126; --mark:#4a4020; --code:#25282d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --card:#1e2125; --ink:#e8e9eb; --muted:#a2a7ae; --line:#33373d;
+  --accent:#8db4ea; --accent-soft:#1f2c3d; --warn:#f0b866; --warn-soft:#3a2e1a;
+  --ok:#7ccfa0; --ok-soft:#1b3126; --mark:#4a4020; --code:#25282d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  line-height:1.65;font-size:15.5px}
+.wrap{max-width:920px;margin:0 auto;padding:28px 16px 64px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:8px}
+.kicker{font-size:13px;letter-spacing:.06em;color:var(--muted)}
+h1{font-size:26px;line-height:1.3;margin:6px 0 10px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav a{flex:0 0 auto;font-size:13.5px;text-decoration:none;color:var(--ink);padding:6px 11px;border:1px solid var(--line);
+  border-radius:999px;background:var(--card)}
+nav a:hover{border-color:var(--accent);color:var(--accent)}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 22px;margin-top:20px}
+h2{font-size:19px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+h2 .num{font-size:13px;color:var(--accent);font-weight:700}
+.lead{color:var(--muted);font-size:14px;margin:0 0 14px}
+h3{font-size:15.5px;margin:20px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--muted);font-weight:600;background:transparent}
+.tbl{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.info{background:var(--accent-soft);color:var(--accent)}
+mark{background:var(--mark);color:inherit;padding:0 3px;border-radius:3px}
+.decide{list-style:none;padding:0;margin:0}
+.decide li{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.decide li:last-child{border-bottom:0}
+.decide .box{width:18px;height:18px;border:2px solid var(--accent);border-radius:4px;margin-top:4px}
+.decide .who{font-size:12.5px;color:var(--muted)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:6px}
+.cal .dow{font-size:12px;text-align:center;color:var(--muted);padding:2px 0}
+.cal .d{min-height:62px;border:1px solid var(--line);border-radius:7px;padding:4px 5px;font-size:12px;position:relative}
+.cal .d .n{font-weight:600;font-size:13px}
+.cal .d .ev{display:block;font-size:11px;line-height:1.3;margin-top:3px}
+.cal .d.empty{border:0}
+.cal .d.rec{background:var(--accent-soft)}
+.cal .d.key{background:var(--accent);color:#fff;border-color:var(--accent)}
+:root[data-theme="dark"] .cal .d.key, :root:not([data-theme="light"]) .cal .d.key{color:var(--bg)}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .cal .d.key{color:#fff} }
+.cal .d.vote{background:var(--ok-soft);border-color:var(--ok)}
+.cal .d.spare{background:var(--warn-soft);border-style:dashed;border-color:var(--warn)}
+.cal .d.maint{background:repeating-linear-gradient(45deg,transparent,transparent 5px,var(--line) 5px,var(--line) 6px)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px;border:1px solid var(--line)}
+.mail{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mail-head{background:var(--code);padding:12px 14px;font-size:14px;border-bottom:1px solid var(--line)}
+.mail-head div{margin:2px 0}
+.mail-head span{color:var(--muted);display:inline-block;min-width:52px}
+.mail-body{padding:16px 16px;white-space:pre-wrap;font-size:14.5px;word-break:keep-all;overflow-wrap:anywhere}
+.btn{font:inherit;font-size:13.5px;cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:var(--card);
+  padding:6px 12px;border-radius:7px}
+.btn:hover{background:var(--accent-soft)}
+.btnrow{display:flex;gap:8px;align-items:center;margin:0 0 10px;flex-wrap:wrap}
+.copied{font-size:13px;color:var(--ok)}
+.doc{border:1px solid var(--line);border-radius:10px;padding:22px 20px;font-size:14.5px}
+.doc h4{text-align:center;font-size:17px;margin:0 0 14px}
+.doc ol{padding-left:20px}
+.doc li{margin-bottom:9px}
+.doc .sub{list-style:none;padding-left:4px;margin-top:6px}
+.doc .sign{text-align:right;margin-top:18px;color:var(--muted)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sys{border:1px solid var(--line);border-radius:10px;padding:14px}
+.sys.used{border:2px solid var(--ok)}
+.sys h4{margin:0 0 6px;font-size:15px}
+.sys dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:3px 8px;font-size:13.5px}
+.sys dt{color:var(--muted)}
+.sys dd{margin:0}
+.note{background:var(--warn-soft);color:var(--ink);border-left:3px solid var(--warn);padding:10px 12px;border-radius:6px;font-size:14px;margin-top:12px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13.5px}
+.flow span{background:var(--accent-soft);color:var(--accent);padding:5px 10px;border-radius:7px}
+.flow b{color:var(--muted);font-weight:400}
+footer{margin-top:26px;font-size:12.5px;color:var(--muted);text-align:center}
+.themebtn{float:right;font-size:12.5px}
+@media (max-width:640px){
+  h1{font-size:21px} section{padding:18px 14px}
+  .compare{grid-template-columns:1fr}
+  .cal .d{min-height:54px;padding:3px}
+  .cal .d .ev{font-size:10px}
+}
+@media print{
+  nav,.btn,.btnrow,.themebtn{display:none!important}
+  body{background:#fff} section{break-inside:avoid;border-color:#ccc}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <button class="btn themebtn" id="themeBtn" type="button">화면 밝기 전환</button>
+  <div class="kicker">교수협의회 공과대학 지회 · 선거관리위원회 내부 검토자료</div>
+  <h1>제31대 공과대학장(임기 2027~2028) 후보 선출 검토자료</h1>
+  <div class="meta">
+    <div>작성 <b>2026.10.29</b></div>
+    <div>위원장 <b>배원규</b> (전기공학부)</div>
+    <div>위원 <b>박성훈</b>, <b>신재만</b></div>
+    <div>상태 <span class="tag warn">초안 · 선관위 의결 전</span></div>
+  </div>
+</header>
+
+<nav>
+  <a href="#decide">1. 결정할 사항</a>
+  <a href="#schedule">2. 일정</a>
+  <a href="#mail">3. 공고 이메일 초안</a>
+  <a href="#rules">4. 첨부: 선출 방법 초안</a>
+  <a href="#system">5. 투표 시스템</a>
+  <a href="#ref">6. 2024년 참고</a>
+</nav>
+
+<!-- 1 -->
+<section id="decide">
+  <h2><span class="num">01</span>선관위에서 확인·결정할 사항</h2>
+  <p class="lead">공고 이메일은 추천 접수 시작(11.2 월) 전, 늦어도 <b>10.30(금)</b>까지 보내는 것을 목표로 합니다.</p>
+  <ul class="decide">
+    <li><span class="box"></span><div><b>선출 방법(규칙)과 일정 의결</b><br>2024년 규칙을 그대로 쓰고 날짜, 이메일, 선관위 명단만 바꾸는 안입니다. <span class="who">→ 4번 초안 검토</span></div></li>
+    <li><span class="box"></span><div><b>결선투표 시간 확정</b><br>규칙상 결선투표는 "1차 투표 개표 당일" 실시합니다. 1차 투표가 11.24(화) 14:00에 끝나므로 <mark>11.24(화) 15:00~18:00</mark>를 제안합니다.</div></li>
+    <li><span class="box"></span><div><b>예비일(11.25 수)을 규칙에 넣을지</b><br>투표율 미달로 재투표하거나 결선 시간이 부족할 때 쓰는 날입니다.</div></li>
+    <li><span class="box"></span><div><b>온라인 투표 업체와 일정 협의</b><br>2024년에 쓴 <b>Kevoting</b>((주)한국전자투표)입니다. 최원준 교수님 계정을 이어서 쓸 수 있는지 확인하고, 직번 인증, 결과 자동공개 끄기, 당일 결선투표가 가능한지 확인해야 합니다. <span class="who">→ 5번 참고</span></div></li>
+    <li><span class="box"></span><div><b>선거운동 관련 방침</b><br>2024년에 한 후보가 소견발표회, 개별 방문, 홍보 메일이 가능한지 물었으나 규정이 없어 판단하지 못했습니다. 이번에 선관위 주최 행사(예: 소견발표회)를 열려면 <b>첫 공고에 포함</b>해야 합니다. <span class="who">→ 6번 참고</span></div></li>
+    <li><span class="box"></span><div><b>투표권자 명단 확정</b><br>교수협의회 공과대학 지회 회원 명단, 직번, 연락처(카카오톡·이메일 안내용)가 필요합니다. 2024년 선거인은 71명이었습니다.</div></li>
+    <li><span class="box"></span><div><b>공고 발송일 확정</b><br>이메일 서명란과 첨부 문서의 날짜에 넣습니다.</div></li>
+  </ul>
+</section>
+
+<!-- 2 -->
+<section id="schedule">
+  <h2><span class="num">02</span>선출 일정안</h2>
+  <p class="lead">2024년 일정에서 추천 기간을 늘리고 투표일을 하루 앞당겼습니다.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>단계</th><th>2026년 (제31대) 안</th><th>2024년 (제30대)</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>공고 발송</td><td><b>~10.30(금)</b></td><td>10.29 규칙 확정</td><td><span class="tag info">발송일 결정 필요</span></td></tr>
+      <tr><td>① 후보 추천 접수</td><td><b>11.2(월) ~ 11.9(월) 24:00</b></td><td>11.11 ~ 11.12</td><td>2일에서 8일로 늘림</td></tr>
+      <tr><td>② 후보 등록 (소견서)</td><td><b>11.13(금) 17:00</b></td><td>11.15(금) 17:00</td><td></td></tr>
+      <tr><td>③ 후보 공지</td><td><b>11.16(월)</b></td><td>11.18(월)</td><td>소견서 일괄 발송</td></tr>
+      <tr><td>④ 온라인 투표</td><td><b>11.23(월) 09:00 ~ 11.24(화) 14:00</b></td><td>11.26 ~ 11.27</td><td><span class="tag warn">업체와 추가 협의 필요</span></td></tr>
+      <tr><td>⑤ 개표·결과 안내</td><td><b>11.24(화) 투표 종료 후</b></td><td>11.27(수)</td><td>결선 시 15:00~18:00 (안)</td></tr>
+      <tr><td>예비일</td><td><b>11.25(수)</b></td><td>없음</td><td>재투표·결선 대비</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2026년 11월 달력</h3>
+  <div class="cal" aria-label="2026년 11월 일정 달력">
+    <div class="dow">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow">토</div>
+    <div class="d"><span class="n">1</span></div>
+    <div class="d rec"><span class="n">2</span><span class="ev">추천 시작</span></div>
+    <div class="d rec"><span class="n">3</span></div>
+    <div class="d rec"><span class="n">4</span></div>
+    <div class="d rec"><span class="n">5</span></div>
+    <div class="d rec"><span class="n">6</span></div>
+    <div class="d rec"><span class="n">7</span></div>
+    <div class="d rec"><span class="n">8</span></div>
+    <div class="d rec"><span class="n">9</span><span class="ev">추천 마감 24시</span></div>
+    <div class="d"><span class="n">10</span></div>
+    <div class="d"><span class="n">11</span></div>
+    <div class="d"><span class="n">12</span></div>
+    <div class="d key"><span class="n">13</span><span class="ev">후보 등록 17시</span></div>
+    <div class="d"><span class="n">14</span></div>
+    <div class="d"><span class="n">15</span></div>
+    <div class="d key"><span class="n">16</span><span class="ev">후보 공지</span></div>
+    <div class="d"><span class="n">17</span></div>
+    <div class="d"><span class="n">18</span></div>
+    <div class="d"><span class="n">19</span></div>
+    <div class="d"><span class="n">20</span></div>
+    <div class="d"><span class="n">21</span></div>
+    <div class="d"><span class="n">22</span></div>
+    <div class="d vote"><span class="n">23</span><span class="ev">투표 09시~</span></div>
+    <div class="d vote"><span class="n">24</span><span class="ev">~14시 · 개표</span></div>
+    <div class="d spare"><span class="n">25</span><span class="ev">예비일</span></div>
+    <div class="d maint"><span class="n">26</span><span class="ev">선관위 K-Voting 점검</span></div>
+    <div class="d"><span class="n">27</span></div>
+    <div class="d"><span class="n">28</span></div>
+    <div class="d"><span class="n">29</span></div>
+    <div class="d"><span class="n">30</span></div>
+    <div class="d empty"></div><div class="d empty"></div><div class="d empty"></div><div class="d empty"></div><div class="d empty"></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--accent-soft)"></i>추천 접수</span>
+    <span><i style="background:var(--accent)"></i>등록·공지</span>
+    <span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>온라인 투표</span>
+    <span><i style="background:var(--warn-soft);border-color:var(--warn)"></i>예비일</span>
+    <span><i style="background:repeating-linear-gradient(45deg,transparent,transparent 3px,var(--muted) 3px,var(--muted) 4px)"></i>중앙선관위 K-Voting 정기점검 (Kevoting과는 별개)</span>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="mail">
+  <h2><span class="num">03</span>공고 이메일 초안</h2>
+  <p class="lead">공과대학 전체 교수님께 보낼 첫 공고입니다. 발송일 빈칸만 채우면 됩니다.</p>
+  <div class="btnrow">
+    <button class="btn" type="button" data-copy="mailText">본문 복사</button>
+    <button class="btn" type="button" data-copy="mailSubj">제목 복사</button>
+    <span class="copied" id="copiedMsg" aria-live="polite"></span>
+  </div>
+  <div class="mail">
+    <div class="mail-head">
+      <div><span>보내는 이</span>배원규 (wgbae@ssu.ac.kr)</div>
+      <div><span>받는 이</span>공과대학 교수님 전체</div>
+      <div><span>제목</span><b id="mailSubj">[교수협의회 공과대학 지회] 제31대 공과대학장 후보 선출 일정 안내 및 후보 추천 요청</b></div>
+      <div><span>첨부</span>제31대 공과대학장 후보 선출 방법</div>
+    </div>
+<div class="mail-body" id="mailText">공과대학 교수님들께,
+
+안녕하십니까. 교수협의회 공과대학 지회장, 전기공학부 배원규입니다.
+
+제30대 공과대학장님의 임기(2025~2026년)가 올해 말 끝남에 따라, 공과대학장 후보 선거관리위원회에서 제31대 공과대학장(임기 2027~2028년) 후보 선출 방법과 일정을 다음과 같이 정했기에 안내드립니다. 자세한 규칙은 첨부한 「제31대 공과대학장 후보 선출 방법」을 참고해 주시기 바랍니다.
+
+■ 선출 일정
+1. 후보 대상자 추천 접수: 2026년 11월 2일(월) ~ 11월 9일(월) 자정(24:00)까지
+2. 후보 등록(소견서 제출): 2026년 11월 13일(금) 17:00까지
+3. 후보 공지: 2026년 11월 16일(월)
+4. 온라인 투표: 2026년 11월 23일(월) 09:00 ~ 11월 24일(화) 14:00 (예정)
+   ※ 비고: 투표 일정은 온라인 투표 시스템 업체와 한 번 더 협의한 뒤 확정하여 다시 안내드리겠습니다.
+5. 개표 및 결과 안내: 2026년 11월 24일(화) 투표 종료 후
+
+■ 후보 추천 방법
+- 추천하실 교수님은 전기공학부 배원규 교수 이메일(wgbae@ssu.ac.kr)로 '○○○ 교수님을 공과대학장 후보로 추천합니다.'라고 보내 주십시오.
+- 접수 기간: 11월 2일(월) ~ 11월 9일(월) 자정까지
+
+■ 후보 등록 방법
+- 1인 이상의 추천을 받은 교수님 가운데 학장 후보로 나서실 분은 소견서를 직접 작성하여 첨부파일로 위 이메일(wgbae@ssu.ac.kr)에 보내 주십시오.
+- 마감: 11월 13일(금) 17:00
+- 등록하신 교수님들의 소견서는 선거관리위원회가 모아 11월 16일(월) 투표권자 전원에게 이메일로 일괄 발송합니다.
+
+■ 선출 방법 요약
+- 투표권: 교수협의회 공과대학 지회 회원
+- 선거 성립: 투표 참여 대상자 과반수 참여 / 당선: 참여자 과반수 득표
+- 단일 후보: 찬반 투표를 실시하며, 과반수 찬성으로 선출
+- 복수 후보: 1차 투표에서 과반 득표자가 없으면 상위 2인을 대상으로 개표 당일 결선투표 실시
+- 투표 방식: 온라인 투표(PC·스마트폰), 카카오톡과 이메일로 투표 안내 발송
+- 후보자별 득표수는 일반 선거인에게 공개하지 않습니다.
+
+공과대학의 다음 2년을 이끌어 주실 분을 모시는 중요한 절차인 만큼, 교수님들의 많은 관심과 추천 부탁드립니다. 문의 사항은 회신으로 편하게 말씀해 주십시오.
+
+감사합니다.
+
+2026년 [ ]월 [ ]일
+공과대학장 후보 선거관리위원회
+(선거관리위원장 배원규, 선거관리위원 박성훈, 선거관리위원 신재만)
+
+[첨부] 제31대 공과대학장 후보 선출 방법</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="rules">
+  <h2><span class="num">04</span>첨부 문서 초안: 「제31대 공과대학장 후보 선출 방법」</h2>
+  <p class="lead">2024년 「제30대 공과대학장 후보 선출 방법」을 바탕으로 했습니다. <mark>노란색</mark>은 2024년에서 바뀌었거나 선관위가 정해야 하는 부분입니다.</p>
+  <div class="doc">
+    <h4><mark>제31대</mark> 공과대학장 후보 선출 방법</h4>
+    <p><mark>제31대</mark> 공과대학장 후보 선출 투표에 있어서 공과대학장 후보 선거 관리위원회에서는 공과대학장 후보 선출에 관한 규칙을 다음과 같이 정한다.</p>
+    <ol>
+      <li>투표는 공과대학 교수협의회 회원으로 한하며 투표 참여 대상자 수의 과반수 참여로 선거가 성립되고, 참여자 중 과반수 득표한 입후보자 교수님이 학장 후보로 선출된다. 투표 참여자가 참여 대상자의 과반수에 달하지 못할 경우, 선거 관리위원회에서 정한 일정에 따라 투표를 다시 진행한다. 만일 재투표에서도 투표 참여자가 과반수에 도달하지 못한 경우, 선거 관리위원회에서 정한 일정에 따라 후보 대상자 추천 단계부터 재선거를 진행한다.</li>
+      <li>단일 후보의 경우, 후보자에 대한 찬반을 묻는 투표를 진행하여 과반수의 찬성으로 후보자를 학장 후보로 선출한다. 찬성이 절반을 넘지 않으면 선거 관리위원회에서 정한 일정에 따라 후보 대상자 추천 단계부터 재선거를 진행한다.</li>
+      <li>다수가 입후보한 경우, 1차 투표 결과 과반수의 득표자가 없으면 아래 &lt;결선투표 진출 후보자 우선 선출 방법&gt;에 따라 선출된 2명의 후보자를 대상으로 1차 투표 개표 당일 결선투표를 진행한다. <mark>[검토] 결선투표 시간: 11월 24일(화) 15:00~18:00</mark>
+        <ul class="sub">
+          <li>① 1차 투표의 득표 순위 1위와 2위</li>
+          <li>② 1위의 득표자가 2인 이상일 경우, 공과대학 최장 봉직 기간 순위 1위와 2위</li>
+          <li>③ 1인의 최다 득표자와 2인 이상의 2위 득표자 중 공과대학 최장기간 봉직 후보자 1인</li>
+        </ul>
+      </li>
+      <li>결선투표에서의 학장 후보 선출은 결선투표 참여자의 최다 득표자(1차 투표 참여 여부와 무관)를 학장 후보로 선출한다. 만약 두 후보자 모두 같은 수의 표를 득표할 경우, 1차 투표에서의 1위 후보자를 학장 후보로 선출하되 1차 투표에서 동률이었을 경우에는 공과대학 최장 봉직 기간의 후보자를 학장 후보로 선출한다.</li>
+      <li><mark>31대</mark> 공과대학장 후보 선출을 위한 일정 공고
+        <ul class="sub">
+          <li>1) 공과대학장 후보 대상자 추천 및 등록<br>
+          추천 방법: 추천자는 교수협의회 공과대학 지회장에게 이메일(<mark>wgbae@ssu.ac.kr</mark>)로 '○○○ 교수님을 공과대학장 후보로 추천합니다.'라고 송부 (<mark>2026년 11월 2일(월) ~ 9일(월) 자정까지</mark>)<br>
+          등록 방법: 학장 후보로 나오는 교수님이 소견서를 직접 작성하여 교수협의회 공과대학 지회장에게 첨부파일로 이메일(<mark>wgbae@ssu.ac.kr</mark>) 송부 (<mark>11월 13일(금) 17시 00분까지</mark>)</li>
+          <li>2) 공과대학장 후보 대상자 공지: <mark>2026년 11월 16일(월)</mark><br>
+          공지 방법: 1인 이상의 추천을 받은 교수님의 소견서를 모아서 투표권자에게 이메일 송부</li>
+          <li>3) 공과대학장 후보 선출(온라인 투표)<br>
+          일시: <mark>2026년 11월 23일(월) 09시 00분 ~ 24일(화) 14시 00분 (예정, 시스템 업체 협의 후 확정)</mark><br>
+          2차 투표가 필요할 경우 선거관리위원회에서 정한 일정에 따라 투표를 다시 진행한다. <mark>[검토] 예비일: 11월 25일(수)</mark></li>
+        </ul>
+      </li>
+      <li>개표는 선거관리위원회의 주관으로 진행하며, 후보자별 득표수는 일반 선거인에게는 공개하지 않는다.</li>
+    </ol>
+    <div class="sign">
+      <mark>2026년 [ ]월 [ ]일</mark><br>
+      공과대학 공과대학장 후보 선거 관리위원회<br>
+      (선거관리위원장 <mark>배원규</mark>, 선거관리위원 <mark>박성훈</mark>, 선거관리위원 <mark>신재만</mark>)
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="system">
+  <h2><span class="num">05</span>온라인 투표 시스템</h2>
+  <p class="lead">이름이 비슷한 두 서비스가 있어 헷갈리기 쉽습니다. 2024년에 쓴 것은 <b>왼쪽</b>입니다.</p>
+  <div class="compare">
+    <div class="sys used">
+      <h4>Kevoting <span class="tag ok">2024년 사용</span></h4>
+      <dl>
+        <dt>서비스명</dt><dd>한국전자투표서비스</dd>
+        <dt>운영</dt><dd>(주)한국전자투표, 민간</dd>
+        <dt>주소</dt><dd>www.kevoting.co.kr</dd>
+        <dt>11.26 점검</dt><dd>해당 없음</dd>
+      </dl>
+    </div>
+    <div class="sys">
+      <h4>K-Voting</h4>
+      <dl>
+        <dt>서비스명</dt><dd>중앙선거관리위원회 온라인투표시스템</dd>
+        <dt>운영</dt><dd>중앙선거관리위원회, 공공</dd>
+        <dt>주소</dt><dd>vote.kvoting.go.kr</dd>
+        <dt>11.26 점검</dt><dd>정기점검 예정</dd>
+      </dl>
+    </div>
+  </div>
+  <h3>2024년 설정 (회의록 기준)</h3>
+  <table>
+    <tbody>
+      <tr><th style="width:120px">인증</th><td>인증번호 없이 <b>직번</b>으로 본인 확인 (혼선을 줄이기 위함)</td></tr>
+      <tr><th>안내</th><td>카카오톡과 이메일로 안내 발송, PC와 스마트폰으로 투표</td></tr>
+      <tr><th>사전 점검</th><td>웹사이트 등록 후 테스트 투표</td></tr>
+      <tr><th>결과</th><td>결과 자동공개 끄기 → 선관위원 3인이 함께 확인 → 사이트에서 발급한 결과 PDF를 후보에게 전달</td></tr>
+    </tbody>
+  </table>
+  <div class="note">관리자 계정을 새로 만들 경우 기관 사업자등록증과 관리자 지정 확인서로 처음 한 번 승인을 받아야 합니다. 평일 17시 이전에 신청하면 당일 승인됩니다. 2024년 계정(최원준 교수님)을 이어서 쓸 수 있는지 먼저 확인하는 것이 빠릅니다.</div>
+</section>
+
+<!-- 6 -->
+<section id="ref">
+  <h2><span class="num">06</span>2024년(제30대) 선거 참고</h2>
+  <p class="lead">숭실대학교 교수협의회 공과대학 지회 회의록 4건과 「제30대 공과대학장 후보 선출 방법」을 정리했습니다.</p>
+  <div class="flow">
+    <span>10.29 규칙·일정 확정</span><b>→</b><span>11.11~12 추천</span><b>→</b><span>11.15 등록</span><b>→</b><span>11.18 공지</span><b>→</b><span>11.26~27 투표</span><b>→</b><span>11.27 개표</span>
+  </div>
+  <div class="tbl" style="margin-top:14px">
+  <table>
+    <thead><tr><th>회의</th><th>장소 · 참석</th><th>주요 내용</th></tr></thead>
+    <tbody>
+      <tr><td>10.29(화)</td><td>형남 707 · 최원준, 강창묵, 홍지우</td><td>일정과 선출 방법 확정, Kevoting 도입, 교협 지원금 71만 원(71명 × 1만 원)을 선거 비용으로 쓰고 남은 돈은 기말 워크숍에 보탬. 12.20까지 영수증 제출</td></tr>
+      <tr><td>11.13(수)</td><td>형남 707 · 같음</td><td>후보 2인 추천 접수(김동수, 이향범), 테스트 투표, 직번 인증, 결과 자동공개 끄기</td></tr>
+      <tr><td>11.21(수)</td><td>형남 613 · 최원준, 강창묵 (홍지우 의견 미리 전달)</td><td>후보 1인이 선거운동 방식을 문의함 → 규정이 없어 판단 보류, 교협 운영위원회로 넘김</td></tr>
+      <tr><td>11.27(수)</td><td>형남 707 · 최원준, 강창묵, 홍지우</td><td>개표: 선거인 71명 중 62명 투표(87.32%), 과반 득표자 선출. 후보에게는 결과 PDF로, 전체 교수에게는 투표율과 과반 득표자만 안내</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>2024년 선거운동 문의와 선관위 판단 (11.21 회의록)</h3>
+  <table>
+    <tbody>
+      <tr><th style="width:120px">문의</th><td>소견발표회를 여는지 / 교수님을 개별로 또는 회의 자리로 찾아가도 되는지 / 개별 또는 전체 교수에게 홍보 이메일을 보내도 되는지</td></tr>
+      <tr><th>판단</th><td>선거운동 규정이 없어 선관위가 허용 여부를 정할 수 없음. 다만 선관위가 소견서를 모아 한꺼번에 보내는 취지(선거 과열 방지, 선거 뒤 관계 고려)를 이해해 달라고 요청. 공식 일정이 이미 공고되어 선관위 주최 행사는 추가할 수 없음</td></tr>
+      <tr><th>후속</th><td>세부 규정이 필요하다는 의견을 교협 운영위원회에 전달 → <b>그 뒤 규정이 생겼는지 확인 필요</b></td></tr>
+    </tbody>
+  </table>
+  <div class="note">후보별 득표수는 2024년 규칙 6항(일반 선거인에게 비공개)에 따라 이 자료에 싣지 않았습니다.</div>
+</section>
+
+<footer>교수협의회 공과대학 지회 선거관리위원회 내부 검토용 · 2026.10.29 작성 · 의결 전 초안</footer>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  function cur(){var t=root.getAttribute('data-theme'); if(t) return t;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+  btn.addEventListener('click',function(){root.setAttribute('data-theme',cur()==='dark'?'light':'dark');});
+  var msg=document.getElementById('copiedMsg');
+  function done(t){msg.textContent=t; setTimeout(function(){msg.textContent='';},2000);}
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.getAttribute('data-copy')).innerText;
+      try{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){done('복사했습니다');},function(){fallback(text);});
+        } else fallback(text);
+      }catch(e){fallback(text);}
+    });
+  });
+  function fallback(text){
+    try{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+      document.execCommand('copy');document.body.removeChild(ta);done('복사했습니다');}
+    catch(e){done('직접 선택해 복사해 주세요');}
+  }
+})();
+</script>
+</body>
+</html>
